@@ -63,6 +63,11 @@ public class Main {
         System.out.println(audi.getMechanics().size());
         System.out.println(audi.getSponsors().size());
         audi.printAllInfoOfTransport();
+
+        ServiceStation<Transport> transportServiceStation1 = new ServiceStation<>();
+        transportServiceStation1.addTransport(bmw);
+        transportServiceStation1.addTransport(ural);
+        transportServiceStation1.carryOutTechnicalInspection();
     }
 
     public static boolean checkDiagnostic(Transport ... transports) throws CantDiagnosticException {
