@@ -67,6 +67,7 @@ public class Main {
         ServiceStation<Transport> transportServiceStation1 = new ServiceStation<>();
         transportServiceStation1.addTransport(bmw);
         transportServiceStation1.addTransport(ural);
+        transportServiceStation1.addTransport(cityBus);
         transportServiceStation1.carryOutTechnicalInspection();
     }
 

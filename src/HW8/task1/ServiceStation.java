@@ -13,7 +13,7 @@ public class ServiceStation<S extends Transport>{
 
     public void carryOutTechnicalInspection() {
         S transport = queue.poll();
-        if (transport != null){
+        if (!(transport instanceof Bus)) {
             System.out.println("Провродится техосмотр " + transport.getBrand() + " " + transport.getModel());
             carryOutTechnicalInspection();
         } else {
