@@ -1,11 +1,12 @@
 package HW8.task1;
 
 
+import HW8.task1.driver.Driver;
 import HW8.task1.driver.DriverBus;
 import HW8.task1.driver.DriverCar;
 import HW8.task1.driver.DriverTruck;
-import HW8.task1.Mechanic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -49,17 +50,26 @@ public class Main {
 
 
 
-        Mechanic<Transport> vasiliy = new Mechanic<>("Сидоров Вася", TypeOfTransport.ALL_TRANSPORT);
-        Mechanic<Car> dima = new Mechanic<>("Данилов Дмитрий", TypeOfTransport.CAR);
-        dima.getCompany().add(Sponsor.RED_BULL);
+        Mechanic<Transport> vasiliy = new Mechanic<>("Сидоров Вася");
+        Mechanic<Car> dima = new Mechanic<>("Данилов Дмитрий");
+
+
+
+
+        Sponsor<Truck> redBull = new Sponsor<>("Red Bull", 15000);
+        Sponsor<Car> shell = new Sponsor<>("Shell", 50000);
+        Sponsor<Car> sber = new Sponsor<>("Sber", 50000);
+
         List<Transport> race1 = List.of(audi,bmw,lada, cityBus, touristBus, workBus, gaz, ural, kamaz);
+        System.out.println(race1);
 
         System.out.println(race1.size());
-        audi.getSponsors().add(Sponsor.RED_BULL);
-        audi.getSponsors().add(Sponsor.MARLBORO);
-        audi.getSponsors().add(Sponsor.SHELL);
         audi.getMechanics().add(vasiliy);
         audi.getMechanics().add(dima);
+        vasiliy.getCompany().add(sber);
+        audi.getSponsors().add(shell);
+        audi.getSponsors().add(sber);
+        audi.getDrivers().add(vasya);
         System.out.println(audi.getMechanics().size());
         System.out.println(audi.getSponsors().size());
         audi.printAllInfoOfTransport();
@@ -67,8 +77,13 @@ public class Main {
         ServiceStation<Transport> transportServiceStation1 = new ServiceStation<>();
         transportServiceStation1.addTransport(bmw);
         transportServiceStation1.addTransport(ural);
-        transportServiceStation1.addTransport(cityBus);
+        transportServiceStation1.addTransport(workBus);
         transportServiceStation1.carryOutTechnicalInspection();
+
+
+        transportServiceStation1.carryOutTechnicalInspection();
+
+
     }
 
     public static boolean checkDiagnostic(Transport ... transports) throws CantDiagnosticException {

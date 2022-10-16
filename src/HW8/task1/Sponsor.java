@@ -1,20 +1,40 @@
 package HW8.task1;
 
-public enum Sponsor {
-    MARLBORO (10000),
-    SHELL (500000),
-    PETRONAS (150000),
-    METRO (10000000),
-    RED_BULL(155000),
-    PUMA (200000);
+public class Sponsor<T extends Transport> {
+    private final String name;
+    private Integer supportAmount;
 
-    private int supportAmount;
+    public Sponsor(String name, Integer supportAmount) {
+        this.name = name;
+        setSupportAmount(supportAmount);
+    }
 
-    Sponsor(int supportAmount) {
-        this.supportAmount = supportAmount;
+    public String getName() {
+        return name;
     }
 
     public int getSupportAmount() {
         return supportAmount;
+    }
+
+    public void setSupportAmount(Integer supportAmount) {
+        if (supportAmount == null || supportAmount < 0 ) {
+            supportAmount = Integer.valueOf("Не указана сумма взноса");
+        } else {
+            this.supportAmount = supportAmount;
+        }
+    }
+
+    public void infoSponsorRace(T sponsor) {
+        System.out.println(sponsor + " спонсирует заезд транспортного средства " + sponsor.getBrand() + " "
+                + sponsor.getModel() + ". Сумма поддержки составляет " + supportAmount + " рублей.");
+    }
+
+    @Override
+    public String toString() {
+        return "Sponsor{" +
+                "name='" + name + '\'' +
+                ", supportAmount=" + supportAmount +
+                '}';
     }
 }

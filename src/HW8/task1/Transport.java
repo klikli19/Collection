@@ -6,30 +6,41 @@ import HW8.task1.driver.Driver;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Transport {
+public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
     private Double engineVolume;
 
-    private List<Sponsor> sponsors;
+    private List<Sponsor<?>> sponsors = new ArrayList<>();
 
-    private List<Transport> race;
+    private List<Transport> race = new ArrayList<>();
 
-    private final List<Mechanic> mechanics;
+    private List<Mechanic<?>> mechanics = new ArrayList<>();
 
-    public List<Mechanic> getMechanics() {
-        return mechanics;
-    }
+    private List<Driver<?>> drivers = new ArrayList<>();
+
+
 
     public Transport(String brand, String model, Double engineVolume) {
         this.brand = brand;
         this.model = model;
         setEngineVolume(engineVolume);
-        this.mechanics = new ArrayList<>();
         this.sponsors = new ArrayList<>();
+        this.mechanics = new ArrayList<>();
     }
 
-    public List<Sponsor> getSponsors() {
+    public List<Transport> getRace() {
+        return race;
+    }
+
+    public List<Driver<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+    public List<Sponsor<?>> getSponsors() {
         return sponsors;
     }
 
@@ -69,13 +80,10 @@ public abstract class Transport {
         return false;
     }
 
-    public void sponsorRace(Sponsor sponsor) {
-        System.out.println(sponsor + " спонсирует заезд транспортного средства " + brand + " " + model
-                + ". Сумма поддержки составляет " + sponsor.getSupportAmount() + " рублей.");
-    }
+
 
     public void printAllInfoOfTransport() {
-        System.out.println("у авто " + brand + model + " имеются спонсоры: " + getSponsors() + ", механики: " + getMechanics());
+        System.out.println("У авто " + brand + model + " имеются спонсоры: " + getSponsors() + ", механики: " + getMechanics() + ", водители: " + getDrivers());
     }
 
 
@@ -86,5 +94,9 @@ public abstract class Transport {
                 ", модель='" + model + '\'' +
                 ", объем двигателя='" + engineVolume + '\'' +
                 '}' + "\n";
+    }
+
+    public boolean carryOutTechnicalInspection() {
+        return Math.random() < 0.5;
     }
 }

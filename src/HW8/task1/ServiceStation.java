@@ -5,20 +5,25 @@ import java.util.Queue;
 
 public class ServiceStation<S extends Transport>{
 
-    private Queue<S> queue = new LinkedList<>();
+    private Queue<S> transports = new LinkedList<>();
 
     public void addTransport(S transport) {
-        queue.offer(transport);
+        if (transport instanceof Bus) {
+            System.out.println("Автобусам диагностика не нужна");
+        } else {
+            transports.add(transport);
+        }
     }
 
-    public void carryOutTechnicalInspection() {
-        S transport = queue.poll();
-        if (!(transport instanceof Bus)) {
-            System.out.println("Провродится техосмотр " + transport.getBrand() + " " + transport.getModel());
-            carryOutTechnicalInspection();
-        } else {
-            System.out.println("Все авто прошли техосмотр");
-
+    public void carryOutTechnicalInspection () throws CantDiagnosticException {
+        while (!transports.isEmpty()) {
+            S transport = transports.poll();
+            System.out.println("Проводится техосмотр " + transport.getBrand() + " " + transport.getModel());
+            if (transport.carryOutTechnicalInspection()) {
+                transport.diagnostic();
+            } else {
+                System.out.println("Все исправно");
+            }
         }
     }
 }
