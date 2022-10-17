@@ -4,9 +4,10 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+
 public class Product {
     private final String productsName;
-    private Double price;
+    private double price;
     private Double weight;
     private Set<Product> productSet;
 
@@ -50,6 +51,7 @@ public class Product {
         }
     }
 
+
     @Override
     public boolean equals(Object o) {
         throw new RuntimeException("Есть такой продукт в списке покупок");
@@ -63,7 +65,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "{ Список продуктов:" + "\n" +
+        return "{ Список продуктов:" +
                 "наименование = " + productsName + '\'' +
                 ", цена = " + price +
                 ", вес = " + weight +
