@@ -1,5 +1,6 @@
 package HW9.task1_2;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -12,10 +13,8 @@ public class RecipesBook {
     }
 
     public void addRecipes(Recipes recipes) throws RuntimeException {
-        if (recipesBook.contains(recipes)){
+        if (recipesBook.contains(recipes)) {
             throw new RuntimeException("Такой рецепт уже имеется");
-        } else if (recipes.getRecipesName().contains(recipes.getRecipesName())){
-            throw new RuntimeException("Рецепт с таким названием уже есть");
         } else {
             recipesBook.add(recipes);
         }
