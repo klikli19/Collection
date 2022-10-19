@@ -7,7 +7,9 @@ import HW8.task1.driver.DriverCar;
 import HW8.task1.driver.DriverTruck;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws CantDiagnosticException {
@@ -60,28 +62,50 @@ public class Main {
         Sponsor<Car> shell = new Sponsor<>("Shell", 50000);
         Sponsor<Car> sber = new Sponsor<>("Sber", 50000);
 
-        List<Transport> race1 = List.of(audi,bmw,lada, cityBus, touristBus, workBus, gaz, ural, kamaz);
+        Set<Transport> race1 = new HashSet<>();
+        race1.add(audi);
+        race1.add(audi);
+        race1.add(bmw);
+        race1.add(gaz);
         System.out.println(race1);
 
-        System.out.println(race1.size());
-        audi.getMechanics().add(vasiliy);
-        audi.getMechanics().add(dima);
-        vasiliy.getCompany().add(sber);
-        audi.getSponsors().add(shell);
-        audi.getSponsors().add(sber);
-        audi.getDrivers().add(vasya);
-        System.out.println(audi.getMechanics().size());
-        System.out.println(audi.getSponsors().size());
-        audi.printAllInfoOfTransport();
+        Set<Sponsor> sponsors1 = new HashSet<>();
+        sponsors1.add(redBull);
+        sponsors1.add(redBull);
+        sponsors1.add(sber);
+        System.out.println(sponsors1);
+
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(vasya);
+        drivers.add(misha);
+        drivers.add(misha);
+        drivers.add(alesha);
+        drivers.add(vasya);
+        System.out.println(drivers);
+
+
+
+//        System.out.println(race1.size());
+//        audi.getMechanics().add(vasiliy);
+//        audi.getMechanics().add(dima);
+//        vasiliy.getCompany().add(sber);
+//        audi.getSponsors().add(shell);
+//        audi.getSponsors().add(sber);
+//        audi.getDrivers().add(vasya);
+//        System.out.println(audi.getMechanics().size());
+//        System.out.println(audi.getSponsors().size());
+//        audi.printAllInfoOfTransport();
 
         ServiceStation<Transport> transportServiceStation1 = new ServiceStation<>();
-        transportServiceStation1.addTransport(bmw);
-        transportServiceStation1.addTransport(ural);
-        transportServiceStation1.addTransport(workBus);
-        transportServiceStation1.carryOutTechnicalInspection();
-
-
-        transportServiceStation1.carryOutTechnicalInspection();
+//        transportServiceStation1.addTransport(bmw);
+//        transportServiceStation1.addTransport(ural);
+//        transportServiceStation1.addTransport(workBus);
+//        transportServiceStation1.addTransport(bmw);
+//        transportServiceStation1.addTransport(ural);
+//        transportServiceStation1.carryOutTechnicalInspection();
+//
+//
+//        transportServiceStation1.carryOutTechnicalInspection();
 
 
     }

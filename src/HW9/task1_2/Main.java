@@ -37,12 +37,10 @@ public class Main {
 
 
         Recipes recipes = new Recipes("Салат", product1);
-        Recipes recipes0 = new Recipes("Салат", product2);
         Recipes recipes1 = new Recipes("Макарошки по-флотски", product2);
         RecipesBook recipesBook = new RecipesBook();
         recipesBook.addRecipes(recipes);
         recipesBook.addRecipes(recipes1);
-        recipesBook.addRecipes(recipes0);
         System.out.println(recipesBook);
 
 
