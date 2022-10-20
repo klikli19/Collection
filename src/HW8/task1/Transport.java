@@ -4,20 +4,22 @@ package HW8.task1;
 import HW8.task1.driver.Driver;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
     private Double engineVolume;
 
-    private List<Sponsor<?>> sponsors = new ArrayList<>();
+    private Set<Sponsor<?>> sponsors = new HashSet<>();
 
-    private List<Transport> race = new ArrayList<>();
+    private Set<Transport> race = new HashSet<>();
 
-    private List<Mechanic<?>> mechanics = new ArrayList<>();
+    private Set<Mechanic<?>> mechanics = new HashSet<>();
 
-    private List<Driver<?>> drivers = new ArrayList<>();
+    private Set<Driver<?>> drivers = new HashSet<>();
 
 
 
@@ -25,27 +27,24 @@ public abstract class Transport implements Competing {
         this.brand = brand;
         this.model = model;
         setEngineVolume(engineVolume);
-        this.sponsors = new ArrayList<>();
-        this.mechanics = new ArrayList<>();
+        this.sponsors = new HashSet<>();
+        this.mechanics = new HashSet<>();
     }
 
-    public List<Transport> getRace() {
-        return race;
-    }
-
-    public List<Driver<?>> getDrivers() {
-        return drivers;
-    }
-
-    public List<Mechanic<?>> getMechanics() {
-        return mechanics;
-    }
-    public List<Sponsor<?>> getSponsors() {
+    public Set<Sponsor<?>> getSponsors() {
         return sponsors;
     }
 
-    public List<Transport> getTransports() {
+    public Set<Transport> getRace() {
         return race;
+    }
+
+    public Set<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
+    public Set<Driver<?>> getDrivers() {
+        return drivers;
     }
 
     public String getBrand() {
