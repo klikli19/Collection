@@ -30,6 +30,22 @@ public class PassportDateBase {
         return null;
     }
 
+//** или
+//
+//    private final Map<Integer, Passport> passportMap = new HashMap<>();
+//    public void savePassport1(Passport passport) throws PassportException {
+//        passportMap.put(passport.getNumberOfPassport(), passport);
+//    }
+//
+//
+//    public Passport searchPassport1(int number) {
+//        for (Passport passport : passportMap.values()) {
+//            if (passport.getNumberOfPassport().equals(number)) {
+//                return passport;
+//            }
+//        }
+//        return null;
+//    }
 
 
     @Override
