@@ -1,22 +1,22 @@
 package HW9.task1_2;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class ProductList {
-    private final Set<Product> productSet;
+    private final Map<Product, Double> productSet;
 
     public ProductList() {
-        productSet = new HashSet<>();
+        productSet = new HashMap<>();
+
     }
 
+
     public void addProduct(Product product) throws ProductException {
-        if (productSet.contains(product)) {
+        if (productSet.containsValue(product)) {
             throw new ProductException("В списке уже есть продукт - " + product.getProductsName());
 
         } else {
-            productSet.add(product);
+            productSet.put(product, product.getWeight());
         }
     }
 
@@ -25,8 +25,8 @@ public class ProductList {
     }
     public Double sumPriceProduct(){
         double sum = 0;
-        for (Product product : productSet) {
-            sum += (product.getPrice() * product.getWeight());
+        for (Map.Entry<Product, Double> productDoubleEntry : productSet.entrySet()) {
+            sum += (productDoubleEntry.getKey().getPrice() * productDoubleEntry.getValue()) ;
         }
 
         return sum;
@@ -47,8 +47,8 @@ public class ProductList {
 
     @Override
     public String toString() {
-        return "Список продуктов {" + "\n" +
-                productSet +
+        return "ProductList{" +
+                "productSet=" + productSet +
                 '}';
     }
 }
