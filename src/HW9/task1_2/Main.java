@@ -28,7 +28,7 @@ public class Main {
         Product pasta = new Product("Макарошки", 70.0, 0.4);
         Product carrot = new Product("Морковь", 40.0, 0.15);
         Product groundMeat = new Product("Фарш", 255.0, 0.4);
-        Product onion = new Product("Лук", 30.0, 0.1);
+        Product onion = new Product("Лук", 30.0, null);
         ProductList product2 = new ProductList();
         product2.addProduct(pasta);
         product2.addProduct(carrot);

@@ -1,8 +1,6 @@
 package HW9.task1_2;
 
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 
 public class Product {
@@ -16,8 +14,8 @@ public class Product {
             throw new ProductException("Заполните карточку товара полностью");
         } else {
             this.productsName = productsName;}
-        this.price = price;
-        this.weight = weight;
+        setPrice(price);
+        setWeight(weight);
     }
     public String getProductsName() {
         return productsName;
@@ -36,16 +34,17 @@ public class Product {
     }
 
 
-    public double getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
-        if (weight == null || weight < 0) {
-            throw new RuntimeException("Заполните карточку товара полностью");
+    public double setWeight(Double weight) {
+        if (weight == null) {
+            this.weight = 1.0;
         } else {
             this.weight = weight;
         }
+        return 0;
     }
 
     @Override
